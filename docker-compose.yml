@@ -1,0 +1,37 @@
+version: "3"
+services:
+  master01:
+    container_name: master01
+    build: ./master01/build
+    ports:
+      - 22:22
+    tty: true
+    stdin_open: true
+  master02:
+    container_name: master02
+    build: ./master02/build
+    ports:
+      - 22:22
+    tty: true
+    stdin_open: true
+  master03:
+    container_name: master03
+    build: ./master03/build
+    ports:
+      - 22:22
+    tty: true
+    stdin_open: true
+  node01:
+    container_name: node01
+    build: ./node01/build
+    ports:
+      - 22:22
+    tty: true
+    stdin_open: true
+  ops:
+    container_name: ops
+    build: ./ops/build
+    ports:
+      - 22:22
+    tty: true
+    stdin_open: true
