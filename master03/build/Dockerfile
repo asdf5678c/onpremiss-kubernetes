@@ -7,7 +7,7 @@ RUN apt-get install -y net-tools
 RUN apt-get install -y iputils-ping net-tools
 CMD /etc/init.d/ssh start \
  && cd /root \
- && rm -f .ssh \
+ && if [ -e .ssh ]; then rm -f .ssh; fi \
  && mkdir .ssh \
  && cd .ssh \
  && ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa_master03 \
