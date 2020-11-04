@@ -6,11 +6,17 @@ RUN apt-get install -y vim
 RUN apt-get install -y net-tools
 RUN apt-get install -y iputils-ping net-tools
 RUN apt-get install -y python-pip python3-pip
+#RUN apt-get install -y build-essential
+#RUN easy_install -U setuptools
 RUN pip install --upgrade pip
-RUN easy_install -U setuptools
-RUNpip install --upgrade pip setuptools
-RUN pip install ansible
-RUN pip install netaddr
+#RUN pip install --upgrade pip setuptools
+#RUN pip install ansible==2.9
+RUN apt-get install -y software-properties-common
+RUN apt-add-repository ppa:ansible/ansible
+RUN apt-get update
+RUN apt-get install -y ansible
+#RUN pip install netaddr
+RUN apt-get install -y python-netaddr
 RUN apt-get install -y git
 CMD /etc/init.d/ssh start \
  && cd /root \
@@ -27,12 +33,13 @@ CMD /etc/init.d/ssh start \
  && git clone https://github.com/kubernetes-incubator/kubespray \
  && cd kubespray && git checkout v2.5.0  && pip install -r requirements.txt \
  && cp -rfp inventory/sample inventory/mycluster \
- && declare -a IPS=(172.23.0.2 172.23.0.3 172.23.0.4 172.23.0.5) \
- && echo "exit()" | CONFIG_FILE=inventory/mycluster/hosts.ini python3 \
- && chmod 755 contrib/inventory_builder/inventory.py \
- && contrib/inventory_builder/inventory.py ${IPS[@]} \
+ && declare -a IPS=\(172.23.0.2 172.23.0.3 172.23.0.4 172.23.0.5\) \
+# && echo "exit()" | CONFIG_FILE=inventory/mycluster/hosts.ini python3 \
+# && echo
+# && chmod 755 contrib/inventory_builder/inventory.py \
+# && contrib/inventory_builder/inventory.py ${IPS[@]} \
  && /bin/bash
 
-pip install ansible‚Å
-UnicodeDecodeError: 'ascii' codec can't decode byte 0xe5 in position 0: ordinal not in range(128)
-https://qiita.com/kaitaku/items/073f17cc6e5112e4cdf7
+#pip install ansible‚Å
+#UnicodeDecodeError: 'ascii' codec can't decode byte 0xe5 in position 0: ordinal not in range(128)
+#https://qiita.com/kaitaku/items/073f17cc6e5112e4cdf7
