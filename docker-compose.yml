@@ -1,45 +1,45 @@
 version: "3"
 services:
-  master01:
-    container_name: master01
-    build: ./master01/build
-    ports:
-      - 22:22
-    tty: true
-    stdin_open: true
-    networks:
-      ok_net:
-        ipv4_address: 172.23.0.2
-  master02:
-    container_name: master02
-    build: ./master02/build
-    ports:
-      - 22:22
-    tty: true
-    stdin_open: true
-    networks:
-      ok_net:
-        ipv4_address: 172.23.0.3
-  master03:
-    container_name: master03
-    build: ./master03/build
-    ports:
-      - 22:22
-    tty: true
-    stdin_open: true
-    networks:
-      ok_net:
-        ipv4_address: 172.23.0.4
-  node01:
-    container_name: node01
-    build: ./node01/build
-    ports:
-      - 22:22
-    tty: true
-    stdin_open: true
-    networks:
-      ok_net:
-        ipv4_address: 172.23.0.5
+#  master01:
+#    container_name: master01
+#    build: ./master01/build
+#    ports:
+#      - 22:22
+#    tty: true
+#    stdin_open: true
+#    networks:
+#      ok_net:
+#        ipv4_address: 172.23.0.2
+#  master02:
+#    container_name: master02
+#    build: ./master02/build
+#    ports:
+#      - 22:22
+#    tty: true
+#    stdin_open: true
+#    networks:
+#      ok_net:
+#        ipv4_address: 172.23.0.3
+#  master03:
+#    container_name: master03
+#    build: ./master03/build
+#    ports:
+#      - 22:22
+#    tty: true
+#    stdin_open: true
+#    networks:
+#      ok_net:
+#        ipv4_address: 172.23.0.4
+#  node01:
+#    container_name: node01
+#    build: ./node01/build
+#    ports:
+#      - 22:22
+#    tty: true
+#    stdin_open: true
+#    networks:
+#      ok_net:
+#        ipv4_address: 172.23.0.5
   ops:
     container_name: ops
     build: ./ops/build
